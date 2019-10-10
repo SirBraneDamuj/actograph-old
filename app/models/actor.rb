@@ -1,0 +1,9 @@
+class Actor
+  include Neo4j::ActiveNode
+
+  id_property :tmdb_id
+  property :name
+  property :profile_path
+
+  has_many :out, :episode_appearances, :rel_class => :StarredInEpisode
+end
