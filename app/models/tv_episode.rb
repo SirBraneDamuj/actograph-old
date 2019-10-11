@@ -5,6 +5,6 @@ class TvEpisode
   property :name
   property :episode_number
 
-  has_many :in, :cast_members, :type => :starred_in, :model_class => 'Actor'
-  has_one :out, :season, :type => :in_season, :model_class => 'TvSeason'
+  has_many :in, :cast_members, :rel_class => :StarredInEpisode
+  has_one :out, :season, :type => :episode_of, :model_class => 'TvSeason'
 end

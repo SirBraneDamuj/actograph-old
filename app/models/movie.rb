@@ -3,7 +3,7 @@ class Movie
 
   id_property :tmdb_id
   property :name
-  property :backdrop_path
+  property :poster_path
 
-  has_many :in, :cast_members, :type => :starred_in, :model_class => 'Actor'
+  has_many :in, :cast_members, :rel_class => :StarredInMovie
 end

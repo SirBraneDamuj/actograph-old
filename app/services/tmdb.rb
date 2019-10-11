@@ -1,6 +1,28 @@
 module Tmdb
   API_KEY = ENV["TMDB_API_KEY"]
 
+  def self.load_movie(movie_id)
+    movie = get_movie(movie_id)
+    movie_node = create_or_get_movie_node(
+      :tmdb_id => movie["id"],
+      :name => movie["title"],
+      :poster_path => movie["poster_path"]
+    )
+    movie_credits = get_movie_credits(movie_id)
+    movie_credits["cast"].each do |actor|
+      actor_node = create_or_get_actor_node(
+        :tmdb_id => actor["id"],
+        :name => actor["name"],
+        :profile_path => actor["profile_path"]
+      )
+      StarredInMovie.create(
+        :from_node => actor_node,
+        :to_node => movie_node,
+        :character_name => actor["character"]
+      )
+    end
+  end
+
   def self.load_season(tv_id, season_num, tv_show, season_resp)
     tv_show ||= get_tv(tv_id)
     series_node = create_or_get_tv_node(
@@ -92,6 +114,14 @@ module Tmdb
     series_node.save
   end
 
+  def self.create_or_get_movie_node(tmdb_id:, name:, poster_path:)
+    Movie.find_by(:tmdb_id => tmdb_id) || Movie.create(
+      :tmdb_id => tmdb_id,
+      :name => name,
+      :poster_path => poster_path
+    )
+  end
+
   def self.create_or_get_tv_node(tmdb_id:, name:, poster_path:)
     TvSeries.find_by(:tmdb_id => tmdb_id) || TvSeries.create(
       :tmdb_id => tmdb_id,
@@ -124,12 +154,24 @@ module Tmdb
     )
   end
 
+  def self.get_movie(movie_id)
+    request("https://api.themoviedb.org/3/movie/#{movie_id}")
+  end
+
+  def self.get_movie_credits(movie_id)
+    request("https://api.themoviedb.org/3/movie/#{movie_id}/credits")
+  end
+
   def self.get_tv(tv_id)
     request("https://api.themoviedb.org/3/tv/#{tv_id}")
   end
 
   def self.get_tv_season(tv_id, season_num)
     request("https://api.themoviedb.org/3/tv/#{tv_id}/season/#{season_num}")
+  end
+
+  def self.get_tv_episode(tv_id, season_num, episode_num)
+    request("https://api.themoviedb.org/3/tv/#{tv_id}/season/#{season_num}/episode/#{episode_num}")
   end
 
   def self.get_tv_episode_cast(tv_id, season_num, episode_num)

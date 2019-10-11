@@ -16,7 +16,7 @@ module Actograph
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    config.neo4j.session_type = :server_db
+    config.neo4j.session_type = :http
     config.neo4j.session_path = ENV['NEO4J_URL'] || 'http://neo4j:test@localhost:7474'
   end
 end

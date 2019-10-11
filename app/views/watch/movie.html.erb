@@ -1,0 +1,67 @@
+<h1>Watch Movie</h1>
+
+<h2><%= "#{@movie["title"]} (#{@movie["id"]})" %></h2>
+<p><a href="https://themoviedb.org/movie/<%= @movie["id"] %>"><%= @movie["name"] %> @ The Movie DB</a>
+<div><img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2<%= @movie["poster_path"] %>" /></div>
+
+<h2>Familiar Cast</h2>
+
+<h2>...From TV</h2>
+
+<% @tv_relationships.keys.each do |key| %>
+  <% actor = @tv_relationships[key].first[:actor] %>
+  <% this_character = @tv_relationships[key].first[:this_character] %>
+  <div>
+    <h3><%= actor.name %></h3>
+    <h4><%= this_character %></h4>
+    <div><img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2<%= actor.profile_path %>" /></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Series</th>
+          <th>Episode</th>
+          <th>Episode Name</th>
+          <th>Character</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tv_relationships[key].each do |relationship| %>
+          <tr>
+            <td><%= relationship[:series].name %></td>
+            <td><%= relationship[:season].season_number.to_s + 'x' + relationship[:episode].episode_number.to_s %></td>
+            <td><%= relationship[:episode].name %></td>
+            <td><%= relationship[:character].character_name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+
+<h2>...From Movies</h2>
+<% @movie_relationships.keys.each do |key| %>
+  <% actor = @movie_relationships[key].first[:actor] %>
+  <% this_character = @movie_relationships[key].first[:this_character] %>
+  <div>
+    <h3><%= actor.name %></h3>
+    <h4><%= this_character %></h4>
+    <div><img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2<%= actor.profile_path %>" /></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Movie</th>
+          <th>Character</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @movie_relationships[key].each do |relationship| %>
+          <tr>
+            <td><%= relationship[:movie].name %></td>
+            <td><%= relationship[:character].character_name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+

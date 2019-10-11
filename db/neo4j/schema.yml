@@ -15,6 +15,7 @@
 - CONSTRAINT ON ( `neo4j::migrations::schemamigration`:`Neo4j::Migrations::SchemaMigration`
   ) ASSERT `neo4j::migrations::schemamigration`.migration_id IS UNIQUE
 - CONSTRAINT ON ( actor:Actor ) ASSERT actor.tmdb_id IS UNIQUE
+- CONSTRAINT ON ( movie:Movie ) ASSERT movie.tmdb_id IS UNIQUE
 - CONSTRAINT ON ( tvepisode:TvEpisode ) ASSERT tvepisode.tmdb_id IS UNIQUE
 - CONSTRAINT ON ( tvseason:TvSeason ) ASSERT tvseason.tmdb_id IS UNIQUE
 - CONSTRAINT ON ( tvseries:TvSeries ) ASSERT tvseries.tmdb_id IS UNIQUE
@@ -24,3 +25,4 @@
 - '20191010182916'
 - '20191010182921'
 - '20191010182926'
+- '20191011133630'
