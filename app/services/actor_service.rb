@@ -91,7 +91,7 @@ class ActorService
       actor_node = Actor.where(:tmdb_id => actor["id"])
       next if actor_node.nil?
       actor_node
-        .movie_appearances(:movie, :character).where_not(:tmdb_id => movie_id)
+        .movie_appearances(:movie, :character).where_not(:tmdb_id => movie_id.to_i)
         .pluck(:node2, :movie, :character)
         .uniq
         .select(&:present?)
