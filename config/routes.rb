@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get "/watch", :to => "watch#watch"
   get "/tv_watch/:tmdb_id/:season_num/:episode_num", :to => "watch#tv"
   get "/movie_watch/:tmdb_id", :to => "watch#movie"
+  get "/home", :to => "home#index"
 
 end

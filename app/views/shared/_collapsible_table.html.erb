@@ -1,0 +1,7 @@
+<button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#<%= div_id %>"aria-expanded="false" aria-controls="<%= div_id %>">
+  <span class="if-collapsed">Show</span>
+  <span class="if-not-collapsed">Hide</span>
+</button>
+<div class="collapse" id="<%= div_id %>">
+  <%= yield %>
+</div>

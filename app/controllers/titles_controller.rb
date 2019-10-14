@@ -1,7 +1,7 @@
 class TitlesController < ApplicationController
   def index
-    @movies = Movie.all
-    @series = TvSeries.all
+    @movies = Movie.order(:name).all
+    @series = TvSeries.order(:name).all
   end
 
   def show

@@ -1,0 +1,24 @@
+<%= render "shared/collapsible_table", :div_id => "#{type}-titles" do %>
+  <div class="container">
+    <div class="overflow-auto" style="height: 500px;">
+      <table class="table overflow-auto">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Poster</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% titles.each do |title| %>
+            <tr>
+              <td class="align-middle"><%= link_to title.tmdb_id, "https://themoviedb.org/#{type}/#{title.tmdb_id}", :target => "_blank" %></td>
+              <td class="align-middle"><%= title.name %></td>
+              <td class="align-middle"><img src="<%= 'https://image.tmdb.org/t/p/w92' + title.poster_path %>" /></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>

@@ -1,59 +1,7 @@
-<h1>Actograph</h1>
+<h1>Titles</h1>
 
-<h2>Movies</h2>
-<%= form_with(url: "/watch", method: "get", local: true) do %>
-  <%= label_tag(:tmdb_id, "Movie ID") %>
-  <%= text_field_tag(:tmdb_id) %>
-  <%= hidden_field_tag :type, "movie" %>
-  <%= submit_tag("G R A P H") %>
-<% end %>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Poster</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.tmdb_id %></td>
-        <td><%= movie.name %></td>
-        <td><img src="<%= 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' + movie.poster_path %>" /></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h2><%= @movies.count %> Movies</h2>
+<%= render "title_table", :type => "movie", :titles => @movies %>
 
-<h2>TV Series</h2>
-
-<%= form_with(url: "/watch", method: "get", local: true) do %>
-  <%= label_tag(:tmdb_id, "TV Show ID") %>
-  <%= text_field_tag(:tmdb_id) %>
-  <%= label_tag(:season_num, "Season Number") %>
-  <%= text_field_tag(:season_num) %>
-  <%= label_tag(:episode_num, "Episode Number") %>
-  <%= text_field_tag(:episode_num) %>
-  <%= hidden_field_tag :type, "tv" %>
-  <%= submit_tag("G R A P H") %>
-<% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Poster</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @series.each do |a_series| %>
-      <tr>
-        <td><%= a_series.tmdb_id %></td>
-        <td><%= a_series.name %></td>
-        <td><img src="<%= 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' + a_series.poster_path %>" /></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h2><%= @series.count %> TV Series</h2>
+<%= render "title_table", :type => "tv", :titles => @series %>

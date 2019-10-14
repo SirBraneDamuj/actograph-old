@@ -1,0 +1,28 @@
+<% movie_relationships.keys.each do |key| %>
+  <% actor = movie_relationships[key].first[:actor] %>
+  <% this_character = movie_relationships[key].first[:this_character] %>
+  <div class="mb-3">
+    <h4><%= actor.name %></h4>
+    <p class="lead"><%= this_character %></p>
+    <div class="mb-3"><img src="https://image.tmdb.org/t/p/w185<%= actor.profile_path %>" /></div>
+    <p class="lead"><%= movie_relationships[key].count == 1 ? "#{movie_relationships[key].count} appearance" : "#{movie_relationships[key].count} appearances" %></p>
+    <%= render "shared/collapsible_table", :div_id => "actor-#{actor.tmdb_id}-movie-table" do %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Movie</th>
+            <th>Character</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% movie_relationships[key].each do |relationship| %>
+            <tr>
+              <td><%= relationship[:movie].name %></td>
+              <td><%= relationship[:character].character_name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+<% end %>

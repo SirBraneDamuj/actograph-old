@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+
+section.home-section {
+  margin-bottom: 1.1rem;
+}
+
+[data-toggle="collapse"].collapsed .if-not-collapsed {
+  display: none;
+}
+[data-toggle="collapse"]:not(.collapsed) .if-collapsed {
+  display: none;
+}
+
+.actor-table {
+  border: 2px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  overflow: auto;
+  height: 600px;
+}

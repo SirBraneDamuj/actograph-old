@@ -1,0 +1,22 @@
+<h2>Familiar Cast</h2>
+
+<% tv_count = tv_relationships.keys.count %>
+<% movie_count = movie_relationships.keys.count %>
+
+<h3><%= tv_count == 1 ? "#{tv_count} TV Relationship" : "#{tv_count} TV Relationships" %></h3>
+<div>
+  <%= render "shared/collapsible_table", :div_id => "familiar-tv" do %>
+    <div class="actor-table">
+      <%= render "tv_cast", :tv_relationships => tv_relationships %>
+    </div>
+  <% end %>
+</div>
+
+<h3><%= movie_count == 1 ? "#{movie_count} Movie Relationship" : "#{movie_count} Movie Relationships" %></h3>
+<div>
+  <%= render "shared/collapsible_table", :div_id => "familiar-movie" do %>
+    <div class="actor-table">
+      <%= render "movie_cast", :movie_relationships => movie_relationships %>
+    </div>
+  <% end %>
+</div>

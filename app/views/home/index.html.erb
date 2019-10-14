@@ -1,0 +1,58 @@
+<div class="container">
+  <h1>Actograph</h1>
+
+  <section class="home-section">
+    <h3>Watching a movie?</h2>
+    <div class="watch-form">
+      <%= form_with(url: "/watch", method: "get", local: true) do %>
+        <%= hidden_field_tag :type, "movie" %>
+        <div class="form-row">
+          <div class="col-9">
+            <%= text_field_tag(:tmdb_id, nil, :placeholder => "Movie ID", :class => "form-control") %>
+          </div>
+          <div class="col-3">
+            <%= submit_tag("G R A P H", :class => "btn btn-primary") %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="home-section">
+    <h3>Watching a TV show?</h2>
+    <div class="watch-form">
+      <%= form_with(url: "/watch", method: "get", local: true) do %>
+        <%= hidden_field_tag :type, "tv" %>
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col">
+              <%= text_field_tag(:tmdb_id, nil, :placeholder => "Series ID", :class => "form-control") %>
+            </div>
+            <div class="col">
+              <%= text_field_tag(:season_num, nil, :placeholder => "Season Number", :class => "form-control") %>
+            </div>
+            <div class="col">
+              <%= text_field_tag(:episode_num, nil, :placeholder => "Episode Number", :class => "form-control") %>
+            </div>
+            <div class="col">
+              <%= submit_tag("G R A P H", :class => "btn btn-primary") %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="home-section">
+    <h3>Find a title</h3>
+    <p class="lead">Need to find a title?</p>
+    <%= link_to "TMDb Search >>", "https://themoviedb.org/search", :class => "btn btn-info" %>
+  </section>
+
+
+  <section class="home-section">
+    <h3>Ingested Titles</h3>
+    <p class="lead">There are <mark><%= @total_titles %></mark> movies and TV series in the graph!</p>
+    <%= link_to "Titles >>", "/titles", :class => "btn btn-info" %>
+  </section>
+</div>
