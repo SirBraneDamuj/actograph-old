@@ -8,7 +8,7 @@
         <%= hidden_field_tag :type, "movie" %>
         <div class="form-row">
           <div class="col-9">
-            <%= text_field_tag(:tmdb_id, nil, :placeholder => "Movie ID", :class => "form-control") %>
+            <%= number_field_tag(:tmdb_id, nil, :placeholder => "Movie ID", :class => "form-control") %>
           </div>
           <div class="col-3">
             <%= submit_tag("G R A P H", :class => "btn btn-primary") %>
@@ -26,13 +26,13 @@
         <div class="form-group">
           <div class="form-row">
             <div class="col">
-              <%= text_field_tag(:tmdb_id, nil, :placeholder => "Series ID", :class => "form-control") %>
+              <%= number_field_tag(:tmdb_id, nil, :placeholder => "Series ID", :class => "form-control") %>
             </div>
             <div class="col">
-              <%= text_field_tag(:season_num, nil, :placeholder => "Season Number", :class => "form-control") %>
+              <%= number_field_tag(:season_num, nil, :placeholder => "Season Number", :class => "form-control") %>
             </div>
             <div class="col">
-              <%= text_field_tag(:episode_num, nil, :placeholder => "Episode Number", :class => "form-control") %>
+              <%= number_field_tag(:episode_num, nil, :placeholder => "Episode Number", :class => "form-control") %>
             </div>
             <div class="col">
               <%= submit_tag("G R A P H", :class => "btn btn-primary") %>

@@ -1,0 +1,46 @@
+<div class="container">
+  <h1>Add a new title</h1>
+  <%= link_to "Back", "/home", :class => "btn btn-link" %>
+
+  <h3>Add a movie</h3>
+  <%= form_with(url: "/titles/create", method: "post", local: true) do %>
+    <%= hidden_field_tag :type, "movie" %>
+    <div class="form-row">
+      <div class="col-9">
+        <%= number_field_tag(:tmdb_id, nil, :placeholder => "Movie ID", :class => "form-control") %>
+      </div>
+      <div class="col-3">
+        <%= submit_tag("Load", :class => "btn btn-primary") %>
+      </div>
+    </div>
+  <% end %>
+
+  <h3>Add a whole series</h3>
+  <%= form_with(url: "/titles/create", method: "post", local: true) do %>
+    <%= hidden_field_tag :type, "series" %>
+    <div class="form-row">
+      <div class="col-9">
+        <%= number_field_tag(:tmdb_id, nil, :placeholder => "Series ID", :class => "form-control") %>
+      </div>
+      <div class="col-3">
+        <%= submit_tag("Load", :class => "btn btn-primary") %>
+      </div>
+    </div>
+  <% end %>
+
+    <h3>Add a single season of a series</h3>
+  <%= form_with(url: "/titles/create", method: "post", local: true) do %>
+    <%= hidden_field_tag :type, "season" %>
+    <div class="form-row">
+      <div class="col-5">
+        <%= number_field_tag(:tmdb_id, nil, :placeholder => "Series ID", :class => "form-control") %>
+      </div>
+      <div class="col-4">
+        <%= number_field_tag(:season_number, nil, :placeholder => "Season Number", :class => "form-control") %>
+      </div>
+      <div class="col-3">
+        <%= submit_tag("Load", :class => "btn btn-primary") %>
+      </div>
+    </div>
+  <% end %>
+</div>
