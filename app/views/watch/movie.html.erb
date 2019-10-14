@@ -1,11 +1,11 @@
-<h1>Watch Movie</h1>
-<p><%= link_to "/home", "Back", :class => "btn btn-link" %></p>
+<div class="container">
+  <h1>Watch Movie</h1>
+  <%= link_to "Back", "/home", :class => "btn btn-link" %>
 
-<h2><%= "#{@movie["title"]} (#{@movie["id"]})" %></h2>
-<p><a href="https://themoviedb.org/movie/<%= @movie["id"] %>"><%= @movie["name"] %> @ The Movie DB</a>
-<div><img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2<%= @movie["poster_path"] %>" /></div>
+  <h2><%= @movie["title"] %></h2>
+  <p class="lead">Movie ID: <%= @movie["id"] %>
+<p><%= link_to "#{@movie["title"]} @ TMDb", "https://themoviedb.org/movie/#{@movie["id"]}", :class => "btn btn-info", :target => "_blank" %></p>
+  <div><img src="https://image.tmdb.org/t/p/w185<%= @movie["poster_path"] %>" /></div>
 
-<h2>Familiar Cast</h2>
-
-<%= render "tv_cast", :tv_relationships => @tv_relationships %>
-<%= render "movie_cast", :movie_relationships => @movie_relationships %>
+  <%= render "familiar_cast", :tv_relationships => @tv_relationships, :movie_relationships => @movie_relationships %>
+</div>

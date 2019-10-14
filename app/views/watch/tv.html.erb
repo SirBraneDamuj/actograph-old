@@ -4,7 +4,7 @@
 
   <h2><%= @series["name"] %></h2>
   <p class="lead">Series ID: <%= @series["id"] %>
-  <p><%= link_to "#{@series["name"]} @ TMDb", "https://themoviedb.org/tv/#{@series["id"]}", :class => "btn btn-info" %></p>
+  <p><%= link_to "#{@series["name"]} @ TMDb", "https://themoviedb.org/tv/#{@series["id"]}", :class => "btn btn-info", :target => "_blank" %></p>
 
   <div><img src="https://image.tmdb.org/t/p/w185<%= @series["poster_path"] %>" /></div>
 

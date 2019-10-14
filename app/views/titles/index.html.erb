@@ -1,7 +1,10 @@
-<h1>Titles</h1>
+<div class="container">
+  <h1>Titles</h1>
+  <%= link_to "Back", "/home", :class => "btn btn-link" %>
 
-<h2><%= @movies.count %> Movies</h2>
-<%= render "title_table", :type => "movie", :titles => @movies %>
+  <h2><%= @movies.count %> Movies</h2>
+  <%= render "title_table", :type => "movie", :titles => @movies %>
 
-<h2><%= @series.count %> TV Series</h2>
-<%= render "title_table", :type => "tv", :titles => @series %>
+  <h2><%= @series.count %> TV Series</h2>
+  <%= render "title_table", :type => "tv", :titles => @series %>
+</div>
