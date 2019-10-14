@@ -1,24 +1,5 @@
-# README
+# Actograph
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Actograph is a viewing companion for TV shows and movies that shows you what movies and TV shows you've seen that starred any actors in the current episode or movie.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Now the next time Jeffrey Combs shows up in an episode of Star Trek, you're prepared!
