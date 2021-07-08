@@ -54,6 +54,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'http'
-gem 'neo4j'
+gem 'activegraph'
+gem 'neo4j-ruby-driver'
+gem 'neo4j-rake_tasks'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'

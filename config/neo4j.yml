@@ -1,0 +1,3 @@
+development:
+  url: "bolt://localhost:7472"
+  encryption: false

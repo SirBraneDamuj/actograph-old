@@ -1,5 +1,5 @@
 class StarredInEpisode
-  include Neo4j::ActiveRel
+  include ActiveGraph::Relationship
 
   from_class :Actor
   to_class :TvEpisode

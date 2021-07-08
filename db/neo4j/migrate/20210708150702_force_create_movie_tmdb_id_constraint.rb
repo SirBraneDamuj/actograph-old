@@ -1,4 +1,4 @@
-class ForceCreateMovieTmdbIdConstraint < Neo4j::Migrations::Base
+class ForceCreateMovieTmdbIdConstraint < ActiveGraph::Migrations::Base
   def up
     add_constraint :Movie, :tmdb_id, force: true
   end

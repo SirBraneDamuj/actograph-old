@@ -1,4 +1,4 @@
-class ForceCreateTvSeasonTmdbIdConstraint < Neo4j::Migrations::Base
+class ForceCreateTvSeasonTmdbIdConstraint < ActiveGraph::Migrations::Base
   def up
     add_constraint :TvSeason, :tmdb_id, force: true
   end

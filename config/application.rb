@@ -1,7 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
-require 'neo4j/railtie'
+require 'active_graph/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -16,7 +16,5 @@ module Actograph
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    config.neo4j.session_type = :bolt
-    config.neo4j.session_path = ENV['NEO4J_URL'] || 'http://neo4j:test@localhost:7687'
   end
 end

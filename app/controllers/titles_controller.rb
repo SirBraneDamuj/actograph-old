@@ -9,8 +9,6 @@ class TitlesController < ApplicationController
   def create
     type = params[:type]
     id = params[:tmdb_id]
-    puts type
-    puts id
     case type
     when "movie"
       LoadMovieJob.perform_later(id)

@@ -1,5 +1,5 @@
 class Actor
-  include Neo4j::ActiveNode
+  include ActiveGraph::Node
 
   id_property :tmdb_id
   property :name

@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Add a new title</h1>
-  <%= link_to "Back", "/home", :class => "btn btn-link" %>
+  <%= link_to "Back", "/titles", :class => "btn btn-link" %>
 
   <h3>Add a movie</h3>
   <%= form_with(url: "/titles/create", method: "post", local: true) do %>
@@ -28,7 +28,7 @@
     </div>
   <% end %>
 
-    <h3>Add a single season of a series</h3>
+  <h3>Add a single season of a series</h3>
   <%= form_with(url: "/titles/create", method: "post", local: true) do %>
     <%= hidden_field_tag :type, "season" %>
     <div class="form-row">

@@ -2,6 +2,9 @@
   <h1>Titles</h1>
   <%= link_to "Back", "/home", :class => "btn btn-link" %>
 
+  <br />
+  <%= link_to "New Title", "/titles/new", :class => "btn btn-success" %>
+
   <h2><%= @movies.count %> Movies</h2>
   <%= render "title_table", :type => "movie", :titles => @movies %>
 

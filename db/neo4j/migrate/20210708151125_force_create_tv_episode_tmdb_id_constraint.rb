@@ -1,4 +1,4 @@
-class ForceCreateTvEpisodeTmdbIdConstraint < Neo4j::Migrations::Base
+class ForceCreateTvEpisodeTmdbIdConstraint < ActiveGraph::Migrations::Base
   def up
     add_constraint :TvEpisode, :tmdb_id, force: true
   end
