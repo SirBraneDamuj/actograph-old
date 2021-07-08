@@ -1,0 +1,5 @@
+<h1>Series</h1>
+<%= render "shared/title_table", :type => "series", :titles => @series, :hide_by_default => false %>
+
+<%= link_to "Previous", "/series?offset=#{@offset - 25}", :class => "btn #{@offset == 0 ? 'btn-disabled disabled' : 'btn-secondary'}", :hide_by_default => false %>
+<%= link_to "Next", "/series?offset=#{@offset + 25}", :class => "btn btn-secondary" %>

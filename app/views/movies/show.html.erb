@@ -1,0 +1,13 @@
+<h1><%= link_to "Movies", "/movies" %></h1>
+
+<h2><%= @movie.name %></h2>
+
+<div>
+  <%= link_to "#{@movie.name} @ TMDb >>", "https://themoviedb.org/movie/#{@movie.tmdb_id}", :class => "btn btn-info", :target => "_blank" %>
+</div>
+
+
+<p class="lead">Movie ID: <%= @movie.tmdb_id %>
+<div><img src="https://image.tmdb.org/t/p/w185<%= @movie.poster_path %>" /></div>
+
+<%= render "shared/actor_table", :actors => actors_for_movie(@movie) %>

@@ -8,5 +8,10 @@ Rails.application.routes.draw do
   get "/tv_watch/:tmdb_id/:season_num/:episode_num", :to => "watch#tv"
   get "/movie_watch/:tmdb_id", :to => "watch#movie"
   get "/home", :to => "home#index"
+  get "/movies", :to => "movies#index"
+  get "/movies/:tmdb_id", :to => "movies#show"
+  get "/series", :to => "series#index"
+  get "/series/:tmdb_id", :to => "series#show"
+  get "/actors/:tmdb_id", :to => "actors#show"
 
 end

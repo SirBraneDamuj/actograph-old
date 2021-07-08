@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Character</th>
+      <th>Photo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% actors.each do |actor| %>
+      <tr>
+        <td><%= link_to actor[:name], "/actors/#{actor[:tmdb_id]}" %></td>
+        <td><%= actor[:character_name] %></td>
+        <td><img src="https://image.tmdb.org/t/p/w45<%= actor[:photo] %>" /></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

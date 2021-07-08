@@ -1,0 +1,11 @@
+<h1>Series</h1>
+
+<h2><%= @series.name %></h2>
+
+<div>
+  <%= link_to "#{@series.name} @ TMDb >>", "https://themoviedb.org/tv/#{@series.tmdb_id}", :class => "btn btn-info", :target => "_blank" %>
+</div>
+
+
+<p class="lead">Movie ID: <%= @series.tmdb_id %>
+<div><img src="https://image.tmdb.org/t/p/w185<%= @series.poster_path %>" /></div>
