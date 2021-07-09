@@ -10,7 +10,7 @@
     <% actors.each do |actor| %>
       <tr>
         <td><%= link_to actor[:name], "/actors/#{actor[:tmdb_id]}" %></td>
-        <td><%= actor[:character_name] %></td>
+        <td><%= actor[:character_names].to_a.join(", ") %></td>
         <td><img src="https://image.tmdb.org/t/p/w45<%= actor[:photo] %>" /></td>
       </tr>
     <% end %>

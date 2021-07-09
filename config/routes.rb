@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/movies/:tmdb_id", :to => "movies#show"
   get "/series", :to => "series#index"
   get "/series/:tmdb_id", :to => "series#show"
+  get "/actors", :to => "actors#index"
   get "/actors/:tmdb_id", :to => "actors#show"
 
 end

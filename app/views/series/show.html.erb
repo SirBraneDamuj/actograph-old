@@ -9,3 +9,5 @@
 
 <p class="lead">Movie ID: <%= @series.tmdb_id %>
 <div><img src="https://image.tmdb.org/t/p/w185<%= @series.poster_path %>" /></div>
+
+<%= render "shared/actor_table", :actors => actors_for_series(@series) %>

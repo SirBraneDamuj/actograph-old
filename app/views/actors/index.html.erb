@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Actors</h1>
+  <table class="table overflow-auto">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Profile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @actors.each do |actor| %>
+        <tr>
+          <td class="align-middle"><%= link_to actor.name, "actors/#{actor.tmdb_id}" %></td>
+          <td class="align-middle"><img src="<%= 'https://image.tmdb.org/t/p/w92' + (actor.profile_path || '') %>" /></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "Previous", "/actors?offset=#{@offset - 25}", :class => "btn #{@offset == 0 ? 'btn-disabled disabled' : 'btn-secondary'}", :hide_by_default => false %>
+  <%= link_to "Next", "/actors?offset=#{@offset + 25}", :class => "btn btn-secondary" %>
+</div>

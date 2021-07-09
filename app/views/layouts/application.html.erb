@@ -11,7 +11,29 @@
 
   <body>
     <div class="p-5 container">
-      <%= link_to "Actograph", "/home" %>
+      <ul class="nav">
+        <li class="nav-item">
+          <%= link_to "Actograph", "/home", :class => "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Titles</a>
+          <div class="dropdown-menu">
+            <%= link_to "Movies", "/movies", :class => "dropdown-item" %>
+            <%= link_to "Series", "/series", :class => "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Add New", "/titles/new", :class => "dropdown-item" %>
+          </div>
+        </li>
+        <li class="nav-item mr-auto">
+          <%= link_to "Actors", "/actors", :class => "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown"href="#">User</a>
+          <div class="dropdown-menu">
+            <%= link_to "Logout", "/logout", :class => "dropdown-item" %>
+          </div>
+        </li>
+      </ul>
       <%= yield %>
     </div>
   </body>

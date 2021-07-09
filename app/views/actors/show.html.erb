@@ -9,3 +9,15 @@
 
 <p class="lead">Actor ID: <%= @actor.tmdb_id %>
 <div><img src="https://image.tmdb.org/t/p/w185<%= @actor.profile_path %>" /></div>
+
+<% appearances = titles_for_actor(@actor) %>
+
+<% if appearances[:movies].present? %>
+  <h3>Movie Appearances</h3>
+  <%= render "shared/actor_appearance_table", :titles => appearances[:movies], :title_type => "movies" %>
+<% end %>
+
+<% if appearances[:series].present? %>
+  <h3>TV Appearances</h3>
+  <%= render "shared/actor_appearance_table", :titles => appearances[:series], :title_type => "series" %>
+<% end %>

@@ -2,7 +2,7 @@
   <h1>Actograph</h1>
 
   <section class="home-section">
-    <h3>Watching a movie?</h2>
+    <h3>Watching a movie?</h3>
     <div class="watch-form">
       <%= form_with(url: "/watch", method: "get", local: true) do %>
         <%= hidden_field_tag :type, "movie" %>
@@ -19,7 +19,7 @@
   </section>
 
   <section class="home-section">
-    <h3>Watching a TV show?</h2>
+    <h3>Watching a TV show?</h3>
     <div class="watch-form">
       <%= form_with(url: "/watch", method: "get", local: true) do %>
         <%= hidden_field_tag :type, "tv" %>
@@ -33,6 +33,25 @@
             </div>
             <div class="col">
               <%= number_field_tag(:episode_num, nil, :placeholder => "Episode Number", :class => "form-control") %>
+            </div>
+            <div class="col">
+              <%= submit_tag("G R A P H", :class => "btn btn-primary") %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="home-section">
+    <h3>Recognize an actor?</h3>
+    <div class="watch-form">
+      <%= form_with(url: "/watch", method: "get", local: true) do %>
+        <%= hidden_field_tag :type, "actor" %>
+        <div class="form-group">
+          <div class="form-row">
+            <div class="col">
+              <%= number_field_tag(:tmdb_id, nil, :placeholder => "Actor ID", :class => "form-control") %>
             </div>
             <div class="col">
               <%= submit_tag("G R A P H", :class => "btn btn-primary") %>

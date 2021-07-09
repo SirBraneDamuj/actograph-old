@@ -1,0 +1,21 @@
+<table class="table overflow-auto">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Character Name(s)</th>
+      <th>Poster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% titles.each do |title| %>
+      <tr>
+        <td class="align-middle"><%= link_to title[:name], "/#{title_type}/#{title[:tmdb_id]}" %></td>
+        <td class="align-middle"><%= title[:character_names].to_a.join(", ") %></td>
+        <td class="align-middle">
+<img src="https://image.tmdb.org/t/p/w92<%= title[:photo] %>" />
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
