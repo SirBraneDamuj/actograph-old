@@ -1,0 +1,20 @@
+
+<h1>New User</h1>
+<%= form_with model: @model, url: "/users", local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, placeholder: "Username", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.email_field :email, placeholder: "Email", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.password_field :password, placeholder: "Password", class: "form-control" %>
+    <%= form.password_field :password_confirmation, placeholder: "Confirm", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.submit class: "btn btn-primary form-control" %>
+  </div>
+<% end %>

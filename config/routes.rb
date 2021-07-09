@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  root to: "home#index"
+
   get "/titles", :to => "titles#index"
   get "/titles/new", :to => "titles#new"
   post "/titles/create", :to => "titles#create"
@@ -14,5 +16,12 @@ Rails.application.routes.draw do
   get "/series/:tmdb_id", :to => "series#show"
   get "/actors", :to => "actors#index"
   get "/actors/:tmdb_id", :to => "actors#show"
+
+  get "/users/new", :to => "users#new"
+  post "/users", :to => "users#create"
+
+  get "/login", :to => "users#login"
+  post "/login", :to => "users#do_login"
+  get "/logout", :to => "users#logout"
 
 end

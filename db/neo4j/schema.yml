@@ -19,6 +19,7 @@
 - CONSTRAINT ON ( tvepisode:TvEpisode ) ASSERT tvepisode.tmdb_id IS UNIQUE
 - CONSTRAINT ON ( tvseason:TvSeason ) ASSERT tvseason.tmdb_id IS UNIQUE
 - CONSTRAINT ON ( tvseries:TvSeries ) ASSERT tvseries.tmdb_id IS UNIQUE
+- CONSTRAINT ON ( user:User ) ASSERT user.uuid IS UNIQUE
 :indexes: []
 :versions:
 - '20210708150702'
@@ -27,3 +28,4 @@
 - '20210708151125'
 - '20210708151130'
 - '20210708151758'
+- '20210709144712'

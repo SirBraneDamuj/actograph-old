@@ -1,9 +1,12 @@
 class User
   include ActiveGraph::Node
+  include ActiveModel::SecurePassword
 
-  property :name
-  property :hashed_password
+  has_secure_password
 
-  has_many :out, :watched_episodes, :type => :watched, :model_class => 'TvEpisode'
-  has_many :out, :watched_movies, :type => :watched, :model_class => 'TvEpisode'
+  property :name, type: String
+  property :email, type: String
+  property :password, type: String
+  property :password_digest, type: String
+  property :password_confirmation, type: String
 end

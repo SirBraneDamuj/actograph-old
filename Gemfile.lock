@@ -66,6 +66,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     autoprefixer-rails (10.2.5.1)
       execjs (> 0)
+    bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
@@ -84,6 +85,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    coderay (1.1.3)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     domain_name (0.5.20190701)
@@ -147,6 +149,9 @@ GEM
     orm_adapter (0.5.0)
     os (1.1.1)
     popper_js (1.16.0)
+    pry (0.14.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     public_suffix (4.0.6)
     puma (3.12.6)
     racc (1.5.2)
@@ -265,6 +270,7 @@ PLATFORMS
 
 DEPENDENCIES
   activegraph
+  bcrypt
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.3.1)
   byebug
@@ -275,6 +281,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   neo4j-rake_tasks
   neo4j-ruby-driver
+  pry
   puma (~> 3.12)
   rails (~> 6.0.0)
   sass-rails (~> 5)
