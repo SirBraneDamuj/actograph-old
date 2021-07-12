@@ -1,4 +1,4 @@
-<h1>Series</h1>
+<h1><%= @watched ? "Watched" : "All" %> Series</h1>
 <% if @watched %>
   <%= link_to "All", "/series", class: "btn btn-secondary" %>
 <% else %>

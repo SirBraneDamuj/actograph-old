@@ -13,6 +13,14 @@
   <%= link_to "TMDb >>", "https://themoviedb.org/tv/#{@tmdb_id}/season/#{@season_number}/episode/#{@episode_number}", :class => "btn btn-info", :target => "_blank" %>
 </h2>
 
+<div class="watch-form mb-2">
+  <%= form_with(url: "/watch", method: "get", local: true) do %>
+    <%= hidden_field_tag :type, "movie" %>
+    <%= hidden_field_tag :tmdb_id, @tmdb_id %>
+    <%= submit_tag("G R A P H", :class => "btn btn-primary") %>
+  <% end %>
+</div>
+
 <% if @episode.watchers.where(uuid: @user.uuid).exists? %>
   <%= link_to "Unwatch", "/series/#{@tmdb_id}/seasons/#{@season_number}/episodes/#{@episode_number}/unwatch", class: "btn btn-danger" %>
 <% else %>

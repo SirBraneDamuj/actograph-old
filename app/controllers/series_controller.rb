@@ -77,7 +77,9 @@ class SeriesController < ApplicationController
 
   def show_season; end
 
-  def show_episode; end
+  def show_episode
+    @watched = params[:watched] == "true"
+  end
 
   private
 

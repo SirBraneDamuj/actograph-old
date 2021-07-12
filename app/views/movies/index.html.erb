@@ -1,4 +1,4 @@
-<h1>Movies</h1>
+<h1><%= @watched ? "Watched" : "All" %> Movies</h1>
 <% if @watched %>
   <%= link_to "All", "/movies?offset=#{@offset}", class: "btn btn-secondary" %>
 <% else %>
