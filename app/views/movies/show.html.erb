@@ -7,6 +7,13 @@
     <%= link_to "#{@movie.name} @ TMDb >>", "https://themoviedb.org/movie/#{@movie.tmdb_id}", :class => "btn btn-info", :target => "_blank" %>
   </div>
 
+  <div class="watch-form">
+    <%= form_with(url: "/watch", method: "get", local: true) do %>
+      <%= hidden_field_tag :type, "movie" %>
+      <%= hidden_field_tag :tmdb_id, @tmdb_id %>
+      <%= submit_tag("G R A P H", :class => "btn btn-primary") %>
+    <% end %>
+  </div>
 
   <p class="lead">Movie ID: <%= @movie.tmdb_id %>
   <div class="mb-3">

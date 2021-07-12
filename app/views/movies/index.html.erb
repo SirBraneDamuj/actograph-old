@@ -12,5 +12,6 @@
   </div>
 <% end %>
 <%= render "shared/title_table", :type => "movie", :titles => @movies %>
-<%= link_to "Previous", "/movies?offset=#{@offset - 25}", :class => "btn #{@offset == 0 ? 'btn-disabled disabled' : 'btn-secondary'}", :hide_by_default => false %>
-<%= link_to "Next", "/movies?offset=#{@offset + 25}", :class => "btn btn-secondary" %>
+<%= link_to "Previous", "/movies?offset=#{@offset - 25}", :class => "btn btn-secondary #{@offset == 0 ? 'btn-disabled disabled' : ''}", :hide_by_default => false %>
+<%= "#{@min} - #{@max} of #{@count}" %>
+<%= link_to "Next", "/movies?offset=#{@offset + 25}", :class => "btn btn-secondary #{@max == @count ? "btn-disabled disabled" : ""}" %>

@@ -14,5 +14,5 @@
 <%= render "shared/title_table", :type => "series", :titles => @series %>
 
 <%= link_to "Previous", "/series?offset=#{@offset - 25}", :class => "btn btn-secondary #{@offset == 0 ? 'btn-disabled disabled' : ''}", :hide_by_default => false %>
-<%= "#{@min} - #{@max} of #{TvSeries.count}" %>
+<%= "#{@min} - #{@max} of #{@count}" %>
 <%= link_to "Next", "/series?offset=#{@offset + 25}", :class => "btn btn-secondary #{@max == @count ? "btn-disabled disabled" : ""}" %>

@@ -6,10 +6,16 @@ class MoviesController < ApplicationController
     @offset = params[:offset]&.to_i || 0
     @watched = params[:watched] == "true"
     if @watched
-      @movies = @user.watched_movies.order(:name).limit(25).offset(@offset)
+      all_movies = @user.watched_movies.order(:name)
+      @count = all_movies.count
+      @movies = all_movies.limit(25).offset(@offset)
     else
-      @movies = Movie.order(:name).limit(25).offset(@offset)
+      all_movies = Movie.order(:name)
+      @count = all_movies.count
+      @movies = Movie.limit(25).offset(@offset)
     end
+    @min = @offset + 1
+    @max = (@offset + 25) > @count ? @count : (@offset + 25)
   end
 
   def show; end
@@ -27,7 +33,7 @@ class MoviesController < ApplicationController
   def unwatch
     @user.watched_movies.delete(@movie)
     unless @user.save
-      flash[:alert] = "Failed to mark movie as Not Watched"
+      flash[:alert] = "Failed to Unwatch movie."
     else
       flash[:notice] = "#{@movie.name} is now Not Watched."
     end
