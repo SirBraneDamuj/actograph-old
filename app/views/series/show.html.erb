@@ -1,13 +1,32 @@
 <h1>Series</h1>
 
-<h2><%= @series.name %></h2>
+<h2>
+  <%= link_to @series.name, "/series/#{@tmdb_id}" %>
+  <%= link_to "TMDb >>", "https://themoviedb.org/tv/#{@tmdb_id}", :class => "btn btn-info", :target => "_blank" %>
+</h2>
 
-<div>
-  <%= link_to "#{@series.name} @ TMDb >>", "https://themoviedb.org/tv/#{@series.tmdb_id}", :class => "btn btn-info", :target => "_blank" %>
-</div>
 
-
-<p class="lead">Movie ID: <%= @series.tmdb_id %>
+<p class="lead">Movie ID: <%= @series.tmdb_id %></p>
 <div><img src="https://image.tmdb.org/t/p/w185<%= @series.poster_path %>" /></div>
 
-<%= render "shared/actor_table", :actors => actors_for_series(@series) %>
+<%= link_to "Watch Series", "/series/#{@tmdb_id}/watch", class: "btn btn-success" %>
+<%= link_to "Unwatch Series", "/series/#{@tmdb_id}/unwatch", class: "btn btn-danger" %>
+
+<h3>Seasons</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Season Number</th>
+      <th>Poster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @series.seasons.order(:season_number).each do |season| %>
+      <tr>
+        <td><%= link_to season.season_number, "/series/#{@tmdb_id}/seasons/#{season.season_number}" %></td>
+        <td>
+          <img src="https://image.tmdb.org/t/p/w92<%= season.poster_path %>" />
+        </td>
+      </tr>
+    <% end %>
+</table>

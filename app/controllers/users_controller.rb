@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @model = User.new(_user_params)
     unless @model.save
+      binding.pry
       flash[:alert] = "Something's wrong... I can feel it."
       render :new
     else

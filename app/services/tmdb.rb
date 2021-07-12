@@ -1,7 +1,7 @@
 module Tmdb
   API_KEY = ENV["TMDB_API_KEY"]
 
-  def self.load_movie(movie_id)
+  def self.load_movie(movie_id, user_id = nil)
     movie = get_movie(movie_id)
     movie_node = create_or_get_movie_node(
       :tmdb_id => movie["id"],
@@ -20,6 +20,11 @@ module Tmdb
         :to_node => movie_node,
         :character_name => actor["character"]
       )
+    end
+    if user_id
+      user = User.find(user_id)
+      user.watched_movies << movie_node
+      user.save!
     end
   end
 
@@ -66,7 +71,7 @@ module Tmdb
     season_node.save
   end
 
-  def self.load_series(tv_id)
+  def self.load_series(tv_id, user_id = nil)
     tv_show = get_tv(tv_id)
     series_node = create_or_get_tv_node(
       :tmdb_id => tv_show["id"],
@@ -75,6 +80,7 @@ module Tmdb
     )
     tv_show["seasons"].each do |season|
       season_num = season["season_number"]
+      next if season_num == 0
       season_node = create_or_get_season_node(
         :tmdb_id => season["id"],
         :season_number => season_num,
@@ -112,6 +118,12 @@ module Tmdb
       season_node.save
     end
     series_node.save
+
+    if user_id
+      user = User.find(user_id)
+      user.watched_episodes << series_node.seasons.episodes
+      user.save!
+    end
   end
 
   def self.create_or_get_movie_node(tmdb_id:, name:, poster_path:)

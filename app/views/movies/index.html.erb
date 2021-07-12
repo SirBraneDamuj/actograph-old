@@ -1,6 +1,16 @@
-<div class="container">
-  <h1>Movies</h1>
-  <%= render "shared/title_table", :type => "movie", :titles => @movies %>
-  <%= link_to "Previous", "/movies?offset=#{@offset - 25}", :class => "btn #{@offset == 0 ? 'btn-disabled disabled' : 'btn-secondary'}", :hide_by_default => false %>
-  <%= link_to "Next", "/movies?offset=#{@offset + 25}", :class => "btn btn-secondary" %>
-</div>
+<h1>Movies</h1>
+<% if @watched %>
+  <%= link_to "All", "/movies?offset=#{@offset}", class: "btn btn-secondary" %>
+<% else %>
+  <div class="d-flex justify-items-start">
+    <div>
+      <%= link_to "Watched", "/movies?offset=#{@offset}&watched=true", class: "btn btn-secondary" %>
+    </div>
+    <div>
+      <%= link_to "Add New Title", "/titles/new", class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>
+<%= render "shared/title_table", :type => "movie", :titles => @movies %>
+<%= link_to "Previous", "/movies?offset=#{@offset - 25}", :class => "btn #{@offset == 0 ? 'btn-disabled disabled' : 'btn-secondary'}", :hide_by_default => false %>
+<%= link_to "Next", "/movies?offset=#{@offset + 25}", :class => "btn btn-secondary" %>

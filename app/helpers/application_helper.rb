@@ -25,6 +25,15 @@ module ApplicationHelper
     actors.values.sort { |a,b| a[:name] <=> b[:name] }
   end
 
+  def actors_for_episode(episode)
+    actors = []
+    episode.cast_members.each_rel do |actor_appearance|
+      actor = actor_appearance.from_node
+      actors << { :name => actor.name, :character_names => [actor_appearance.character_name], :photo => actor.profile_path, :tmdb_id => actor.tmdb_id }
+    end
+    actors.sort { |a,b| a[:name] <=> b[:name] }
+  end
+
   def titles_for_actor(actor)
     movies = []
     actor.movie_appearances.each_rel do |movie_appearance|

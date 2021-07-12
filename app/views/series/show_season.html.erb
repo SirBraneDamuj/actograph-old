@@ -1,0 +1,36 @@
+<h1>Series</h1>
+
+<h2>
+  <%= link_to @series.name, "/series/#{@tmdb_id}" %>
+  <%= link_to "TMDb >>", "https://themoviedb.org/tv/#{@tmdb_id}", :class => "btn btn-info", :target => "_blank" %>
+</h2>
+<h2>
+  <%= link_to "Season #{@season_number}", "/series/#{@tmdb_id}/seasons/#{@season_number}" %>
+  <%= link_to "TMDb >>", "https://themoviedb.org/tv/#{@tmdb_id}/season/#{@season_number}", :class => "btn btn-info", :target => "_blank" %>
+</h2>
+
+<p class="lead">Series ID: <%= @tmdb_id %></p>
+
+<div><img src="https://image.tmdb.org/t/p/w185<%= @season.poster_path %>" /></div>
+
+<%= link_to "Watch Season", "/series/#{@tmdb_id}/seasons/#{@season_number}/watch", class: "btn btn-success" %>
+<%= link_to "Unwatch Season", "/series/#{@tmdb_id}/seasons/#{@season_number}/unwatch", class: "btn btn-danger" %>
+
+<h3>Episodes</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Episode Number</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @season.episodes.order(:episode_number).each do |episode| %>
+      <tr>
+        <td><%= link_to episode.episode_number, "/series/#{@tmdb_id}/seasons/#{@season_number}/episodes/#{episode.episode_number}" %></td>
+        <td>
+          <%= episode.name %>
+        </td>
+      </tr>
+    <% end %>
+</table>

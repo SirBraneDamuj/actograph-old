@@ -1,4 +1,6 @@
 class ActorsController < ApplicationController
+  before_action :require_login
+
   def index
     @offset = params[:offset]&.to_i || 0
     @actors = Actor.order(:name).limit(25).offset(@offset)

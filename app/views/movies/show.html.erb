@@ -2,12 +2,21 @@
 
 <h2><%= @movie.name %></h2>
 
-<div>
-  <%= link_to "#{@movie.name} @ TMDb >>", "https://themoviedb.org/movie/#{@movie.tmdb_id}", :class => "btn btn-info", :target => "_blank" %>
+<div class="d-flex flex-column">
+  <div>
+    <%= link_to "#{@movie.name} @ TMDb >>", "https://themoviedb.org/movie/#{@movie.tmdb_id}", :class => "btn btn-info", :target => "_blank" %>
+  </div>
+
+
+  <p class="lead">Movie ID: <%= @movie.tmdb_id %>
+  <div class="mb-3">
+    <% if @user.watched_movie?(@tmdb_id) %>
+      <%= link_to "Unwatch", "/movies/#{@tmdb_id}/unwatch", class: "btn btn-danger" %>
+    <% else %>
+      <%= link_to "I Watched This!", "/movies/#{@tmdb_id}/watch", class: "btn btn-success" %>
+    <% end %>
+  </div>
+  <div><img src="https://image.tmdb.org/t/p/w185<%= @movie.poster_path %>" /></div>
 </div>
-
-
-<p class="lead">Movie ID: <%= @movie.tmdb_id %>
-<div><img src="https://image.tmdb.org/t/p/w185<%= @movie.poster_path %>" /></div>
 
 <%= render "shared/actor_table", :actors => actors_for_movie(@movie) %>

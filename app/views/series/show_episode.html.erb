@@ -1,0 +1,28 @@
+<h1>Series</h1>
+
+<h2>
+  <%= link_to @series.name, "/series/#{@tmdb_id}" %>
+  <%= link_to "TMDb >>", "https://themoviedb.org/tv/#{@tmdb_id}", :class => "btn btn-info", :target => "_blank" %>
+</h2>
+<h2>
+  <%= link_to "Season #{@season_number}", "/series/#{@tmdb_id}/seasons/#{@season_number}" %>
+  <%= link_to "TMDb >>", "https://themoviedb.org/tv/#{@tmdb_id}/season/#{@season_number}", :class => "btn btn-info", :target => "_blank" %>
+</h2>
+<h2>
+  Episode <%= @episode_number %>: <%= @episode.name %>
+  <%= link_to "TMDb >>", "https://themoviedb.org/tv/#{@tmdb_id}/season/#{@season_number}/episode/#{@episode_number}", :class => "btn btn-info", :target => "_blank" %>
+</h2>
+
+<% if @episode.watchers.where(uuid: @user.uuid).exists? %>
+  <%= link_to "Unwatch", "/series/#{@tmdb_id}/seasons/#{@season_number}/episodes/#{@episode_number}/unwatch", class: "btn btn-danger" %>
+<% else %>
+  <%= link_to "I Watched This!", "/series/#{@tmdb_id}/seasons/#{@season_number}/episodes/#{@episode_number}/watch", class: "btn btn-success" %>
+<% end %>
+
+<p class="lead">Series ID: <%= @tmdb_id %></p>
+
+<div><img src="https://image.tmdb.org/t/p/w185<%= @season.poster_path %>" /></div>
+
+<h3>Actors</h3>
+
+<%= render "shared/actor_table", actors: actors_for_episode(@episode) %>
