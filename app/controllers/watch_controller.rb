@@ -9,7 +9,7 @@ class WatchController < ApplicationController
     elsif type == "movie"
       redirect_to "/movie_watch/#{id}"
     elsif type == "actor"
-      redirect_to "/actors/#{id}"
+      redirect_to "/actors/#{id}?watched=true"
     end
   end
 

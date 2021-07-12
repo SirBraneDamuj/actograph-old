@@ -5,5 +5,5 @@ class TvSeries
   property :name
   property :poster_path
 
-  has_many :in, :seasons, :type => :season_of, :model_class => 'TvSeason'
+  has_many :in, :seasons, :type => :season_of, :model_class => 'TvSeason', :dependent => :delete
 end

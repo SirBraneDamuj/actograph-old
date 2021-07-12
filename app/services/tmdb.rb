@@ -83,7 +83,7 @@ module Tmdb
       next if season_num == 0
       season_node = create_or_get_season_node(
         :tmdb_id => season["id"],
-        :season_number => season_num,
+        :season_number => season_num.to_i,
         :poster_path => season["poster_path"]
       )
       series_node.seasons << season_node

@@ -22,6 +22,7 @@
     <tr>
       <th>Episode Number</th>
       <th>Title</th>
+      <th>Watch</th>
     </tr>
   </thead>
   <tbody>
@@ -30,6 +31,13 @@
         <td><%= link_to episode.episode_number, "/series/#{@tmdb_id}/seasons/#{@season_number}/episodes/#{episode.episode_number}" %></td>
         <td>
           <%= episode.name %>
+        </td>
+        <td>
+          <% if episode.watchers.where(uuid: @user.uuid).exists? %>
+            <%= "Watched" %>
+          <% else %>
+            <%= "Not Watched" %>
+          <% end %>
         </td>
       </tr>
     <% end %>

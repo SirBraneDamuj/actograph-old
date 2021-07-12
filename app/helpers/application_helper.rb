@@ -34,10 +34,11 @@ module ApplicationHelper
     actors.sort { |a,b| a[:name] <=> b[:name] }
   end
 
-  def titles_for_actor(actor)
+  def titles_for_actor(actor, user)
     movies = []
     actor.movie_appearances.each_rel do |movie_appearance|
       movie = movie_appearance.to_node
+      next if user && !user.watched_movies.include?(movie)
       movies << {
         :name => movie.name,
         :character_names => [movie_appearance.character_name],
@@ -48,6 +49,7 @@ module ApplicationHelper
     series_appearances = {}
     actor.episode_appearances.each_rel do |ep_appearance|
       episode = ep_appearance.to_node
+      next if user && !user.watched_episodes.include?(episode)
       series = episode.season.series
       unless series_appearances[series.tmdb_id]
         series_appearances[series.tmdb_id] = {

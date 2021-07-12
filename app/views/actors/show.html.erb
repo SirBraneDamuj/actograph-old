@@ -10,14 +10,20 @@
 <p class="lead">Actor ID: <%= @actor.tmdb_id %>
 <div><img src="https://image.tmdb.org/t/p/w185<%= @actor.profile_path %>" /></div>
 
-<% appearances = titles_for_actor(@actor) %>
+<% if @watched %>
+  <%= link_to "Show All", "/actors/#{@actor.tmdb_id}", :class => "btn btn-secondary" %>
+<% else %>
+  <%= link_to "Show Watched", "/actors/#{@actor.tmdb_id}?watched=true", :class => "btn btn-secondary" %>
+<% end %>
+
+<% appearances = titles_for_actor(@actor, @watched ? @user : nil) %>
 
 <% if appearances[:movies].present? %>
-  <h3>Movie Appearances</h3>
+  <h3><%= @watched ? "Watched" : "All" %> Movie Appearances</h3>
   <%= render "shared/actor_appearance_table", :titles => appearances[:movies], :title_type => "movies" %>
 <% end %>
 
 <% if appearances[:series].present? %>
-  <h3>TV Appearances</h3>
+  <h3><%= @watched ? "Watched" : "All" %> TV Appearances</h3>
   <%= render "shared/actor_appearance_table", :titles => appearances[:series], :title_type => "series" %>
 <% end %>

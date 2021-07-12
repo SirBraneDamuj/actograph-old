@@ -9,10 +9,16 @@ class SeriesController < ApplicationController
     @offset = params[:offset]&.to_i || 0
     @watched = params[:watched] == "true"
     if @watched
-      @series = @user.watched_episodes.season.series.uniq.slice(@offset, 25)
+      all_series = @user.watched_episodes.season.series.uniq
+      @count = all_series.count
+      @series = all_series.slice(@offset, 25)
     else
-      @series = TvSeries.order(:name).limit(25).offset(@offset)
+      all_series = TvSeries.order(:name)
+      @count = all_series.count
+      @series = all_series.limit(25).offset(@offset)
     end
+    @min = @offset + 1
+    @max = (@offset + 25) > @count ? @count : (@offset + 25)
   end
 
   def watch
